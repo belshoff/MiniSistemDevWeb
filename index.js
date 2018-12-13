@@ -1,12 +1,22 @@
 let escolas = [];
 let alunos = [];
 
+// function compararEscolas(a, b) {
+//   return a.nome < b.nome ? -1 : a.nome > b.nome : 1 : 0;
+// }
+
+function sortEscolas(a, b) {
+  if(a.nome > b.nome) return 1;
+  if(a.nome < b.nome) return -1;
+  return 0;
+}
+
 function addEscola() {
-  // let escola = ;
   escolas.push({
     nome: document.getElementById("inputEscolaNome").value,
     endereco: document.getElementById("inputEscolaEndereco").value
   });
+  escolas.sort(sortEscolas);
   document.getElementById("inputEscolaNome").value = '';
   document.getElementById("inputEscolaEndereco").value = '';
 
@@ -42,6 +52,16 @@ function deleteEscola(index) {
 }
 
 // Aluno
+
+function sortAlunos(a, b) {
+  if(a.nome > b.nome) return 1;
+  if(a.nome < b.nome) return -1;
+
+  if(a.escola > b.escola) return 1;
+  if(a.escola < b.escola) return -1;
+
+  return 0
+}
 
 function addAluno() {
   alunos.push({
